@@ -1,11 +1,13 @@
+import { useGlobalContext } from "../context/GlobalContext"
+
 export default function Extractor() {
-    const numberEx = Math.ceil(Math.random() * 90)
+    const { handleRandom, numbExt } = useGlobalContext()
     return (
         <div className="extractor">
             <div className="menu">
                 <h3>last number called</h3>
                 <div className="display">
-                    {numberEx}
+                    {numbExt}
                 </div>
                 <div className="callToAction">
 

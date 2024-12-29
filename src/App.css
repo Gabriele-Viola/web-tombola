@@ -25,9 +25,21 @@ h1 {
     width: 70%;
     gap: .5rem 0;
 
-    div {
+    .casella {
         width: 8%;
         background-color: palegoldenrod;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        margin: 0 1%;
+        border-radius: 100%;
+        font-size: 1.5rem;
+    }
+
+    .call {
+        width: 8%;
+        background-color: palevioletred;
         display: flex;
         align-items: center;
         justify-content: center;
