@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import Tabellone from "../components/Tabellone";
 const GlobalContext = createContext()
 
 function GlobalContextProvider({ children }) {
@@ -6,25 +7,33 @@ function GlobalContextProvider({ children }) {
     const [numbExt, setNumbExt] = useState('Start')
     const [called, setCalled] = useState([])
     const [first, setFirst] = useState([])
-    const [numeri, setNumeri] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    const [numeri, setNumeri] = useState(tabellone)
     const [estratti, setEstratti] = useState([])
 
-    function prova() {
-        console.log(numRandom(numeri.length));
+    // const provaArr = [1, 2, 4, 7, 8, 9]
+    // const arrProva = [1, 4, 2, 5, 7, 8]
+    // const altraProv = new Set(provaArr.map(number => arrProva.includes(number)))
+    // console.log(provaArr.map(number => arrProva.includes(number)));
+    // console.log(...altraProv);
 
-        const estratto = numeri[numRandom(numeri.length - 1)]
+
+
+    function prova() {
+        const estratto = numeri[numRandom(numeri.length) - 1]
         setEstratti((prevEstratti) => [...prevEstratti, estratto])
         setNumeri(numeri.filter(i => i !== estratto))
         console.log(estratto);
-
-
 
     }
     console.log(estratti, numeri);
 
 
     function numRandom(rangeNum) {
-        return Math.ceil(Math.random() * rangeNum)
+        const numb = Math.ceil(Math.random() * rangeNum)
+        console.log(numb);
+
+        return numb
+
     }
 
 
