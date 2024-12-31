@@ -2,11 +2,30 @@ import { createContext, useContext, useState } from "react";
 const GlobalContext = createContext()
 
 function GlobalContextProvider({ children }) {
-    const tabellone = Array.from({ length: 90 }, (_, i) => i + 1)
+    const tabellone = Array.from({ length: 90 }, (numero, i) => numero = i + 1)
     const [numbExt, setNumbExt] = useState('Start')
     const [called, setCalled] = useState([])
     const [first, setFirst] = useState([])
+    const [numeri, setNumeri] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    const [estratti, setEstratti] = useState([])
 
+    function prova() {
+        console.log(numRandom(numeri.length));
+
+        const estratto = numeri[numRandom(numeri.length - 1)]
+        setEstratti((prevEstratti) => [...prevEstratti, estratto])
+        setNumeri(numeri.filter(i => i !== estratto))
+        console.log(estratto);
+
+
+
+    }
+    console.log(estratti, numeri);
+
+
+    function numRandom(rangeNum) {
+        return Math.ceil(Math.random() * rangeNum)
+    }
 
 
 
@@ -39,13 +58,13 @@ function GlobalContextProvider({ children }) {
 
     }
 
+    // cartella primi 1 di 6
+    // const prima = called?.filter(num => lastNumb(num) <= 5 || lastNumb(num) !== 0 && num <= 25)
 
-    const prima = called?.filter(num => lastNumb(num) <= 5 || lastNumb(num) !== 0 && num <= 25)
-
-    console.log(prima);
+    // console.log(prima);
 
     const values = {
-        tabellone, numbExt, handleRandom, called
+        tabellone, numbExt, handleRandom, called, prova
     }
     return (
         <GlobalContext.Provider value={values}>
