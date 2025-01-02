@@ -18,50 +18,52 @@ function GlobalContextProvider({ children }) {
 
 
 
-    function prova() {
-        const estratto = numeri[numRandom(numeri.length) - 1]
-        setEstratti((prevEstratti) => [...prevEstratti, estratto])
-        setNumeri(numeri.filter(i => i !== estratto))
-        console.log(estratto);
-
-    }
-    console.log(estratti, numeri);
-
-
-    function numRandom(rangeNum) {
-        const numb = Math.ceil(Math.random() * rangeNum)
-        console.log(numb);
-
-        return numb
-
-    }
-
-
-
     function handleRandom() {
         if (called.length >= 90) {
             setNumbExt('Stop')
+        } else {
 
+            const estratto = numeri[numRandom(numeri.length) - 1]
+            setCalled((prevCalled) => [...prevCalled, estratto])
+            setNumeri(numeri.filter(i => i !== estratto))
+            setNumbExt(estratto)
+            console.log(estratto);
         }
-        while (called.length < 90 || called.length == 0) {
-            const numbExt = Math.ceil(Math.random() * 90)
 
-            if (!called.includes(numbExt)) {
-                console.log('hi');
-                setCalled((prevCalled) => [...prevCalled, numbExt])
-
-
-                return setNumbExt(numbExt)
-
-
-            } else {
-                console.log('nope');
-
-            }
-
-
-        }
     }
+
+
+    function numRandom(rangeNum) {
+        return Math.ceil(Math.random() * rangeNum)
+
+    }
+
+
+
+    // function handleRandom() {
+    //     if (called.length >= 90) {
+    //         setNumbExt('Stop')
+
+    //     }
+    //     while (called.length < 90 || called.length == 0) {
+    //         const numbExt = Math.ceil(Math.random() * 90)
+
+    //         if (!called.includes(numbExt)) {
+    //             console.log('hi');
+    //             setCalled((prevCalled) => [...prevCalled, numbExt])
+
+
+    //             return setNumbExt(numbExt)
+
+
+    //         } else {
+    //             console.log('nope');
+
+    //         }
+
+
+    //     }
+    // }
     function lastNumb(numberToVerify) {
         numberToVerify.toString().split('').reverse().join('')[0]
 
@@ -73,7 +75,7 @@ function GlobalContextProvider({ children }) {
     // console.log(prima);
 
     const values = {
-        tabellone, numbExt, handleRandom, called, prova
+        tabellone, numbExt, handleRandom, called
     }
     return (
         <GlobalContext.Provider value={values}>
